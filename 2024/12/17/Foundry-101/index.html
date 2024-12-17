@@ -20,29 +20,33 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="KinoHui&#39;s Blog">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="编码规范1234567891011121314151617181920212223242526272829303132333435363738394041&#x2F;&#x2F; Layout of Contract:&#x2F;&#x2F; version&#x2F;&#x2F; imports&#x2F;&#x2F; interfaces, libraries, contracts&#x2F;&#x2F; errors&#x2F;&#x2F; Type declarations&#x2F;&#x2F; State variable">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Foundry 101">
+<meta property="og:url" content="http://example.com/2024/12/17/Foundry-101/index.html">
 <meta property="og:site_name" content="KinoHui&#39;s Blog">
+<meta property="og:description" content="编码规范1234567891011121314151617181920212223242526272829303132333435363738394041&#x2F;&#x2F; Layout of Contract:&#x2F;&#x2F; version&#x2F;&#x2F; imports&#x2F;&#x2F; interfaces, libraries, contracts&#x2F;&#x2F; errors&#x2F;&#x2F; Type declarations&#x2F;&#x2F; State variable">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-12-17T01:21:29.000Z">
+<meta property="article:modified_time" content="2024-12-17T01:28:13.108Z">
 <meta property="article:author" content="Kino Hui">
-<meta property="article:tag" content="golang, backend">
+<meta property="article:tag" content="Foundry">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2024/12/17/Foundry-101/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>KinoHui's Blog</title>
+  <title>Foundry 101 | KinoHui's Blog</title>
   
 
 
@@ -141,9 +145,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -159,10 +164,9 @@
       <meta itemprop="name" content="KinoHui's Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/17/Foundry-101/" class="post-title-link" itemprop="url">Foundry 101</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Foundry 101
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -186,7 +190,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="编码规范"><a href="#编码规范" class="headerlink" title="编码规范"></a>编码规范</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">// Layout of Contract:</span><br><span class="line"></span><br><span class="line">// version</span><br><span class="line"></span><br><span class="line">// imports</span><br><span class="line"></span><br><span class="line">// interfaces, libraries, contracts</span><br><span class="line"></span><br><span class="line">// errors</span><br><span class="line"></span><br><span class="line">// Type declarations</span><br><span class="line"></span><br><span class="line">// State variables</span><br><span class="line"></span><br><span class="line">// Events</span><br><span class="line"></span><br><span class="line">// Modifiers</span><br><span class="line"></span><br><span class="line">// Functions</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Layout of Functions:</span><br><span class="line"></span><br><span class="line">// constructor</span><br><span class="line"></span><br><span class="line">// receive function (if exists)</span><br><span class="line"></span><br><span class="line">// fallback function (if exists)</span><br><span class="line"></span><br><span class="line">// external</span><br><span class="line"></span><br><span class="line">// public</span><br><span class="line"></span><br><span class="line">// internal</span><br><span class="line"></span><br><span class="line">// private</span><br><span class="line"></span><br><span class="line">// internal &amp; private view &amp; pure functions</span><br><span class="line"></span><br><span class="line">// external &amp; public view &amp; pure functions</span><br></pre></td></tr></table></figure>
+        <h2 id="编码规范"><a href="#编码规范" class="headerlink" title="编码规范"></a>编码规范</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">// Layout of Contract:</span><br><span class="line"></span><br><span class="line">// version</span><br><span class="line"></span><br><span class="line">// imports</span><br><span class="line"></span><br><span class="line">// interfaces, libraries, contracts</span><br><span class="line"></span><br><span class="line">// errors</span><br><span class="line"></span><br><span class="line">// Type declarations</span><br><span class="line"></span><br><span class="line">// State variables</span><br><span class="line"></span><br><span class="line">// Events</span><br><span class="line"></span><br><span class="line">// Modifiers</span><br><span class="line"></span><br><span class="line">// Functions</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Layout of Functions:</span><br><span class="line"></span><br><span class="line">// constructor</span><br><span class="line"></span><br><span class="line">// receive function (if exists)</span><br><span class="line"></span><br><span class="line">// fallback function (if exists)</span><br><span class="line"></span><br><span class="line">// external</span><br><span class="line"></span><br><span class="line">// public</span><br><span class="line"></span><br><span class="line">// internal</span><br><span class="line"></span><br><span class="line">// private</span><br><span class="line"></span><br><span class="line">// internal &amp; private view &amp; pure functions</span><br><span class="line"></span><br><span class="line">// external &amp; public view &amp; pure functions</span><br></pre></td></tr></table></figure>
 
 
 
@@ -360,155 +364,33 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function testFulfillRandomWordsCanOnlyBeCalledAfterPerformUpkeep(</span><br><span class="line">        uint256 requestId</span><br><span class="line">    ) public raffleEntredAndTimePassed &#123;</span><br><span class="line">        // Arrange</span><br><span class="line">        address vrfCoordinator = raffle.getVrfCoordinatorAddress();</span><br><span class="line">        // Act / Assert</span><br><span class="line">        vm.expectRevert(&quot;nonexistent request&quot;);</span><br><span class="line">        // vm.mockCall could be used here...</span><br><span class="line">        VRFCoordinatorV2Mock(vrfCoordinator).fulfillRandomWords(</span><br><span class="line">            requestId,</span><br><span class="line">            address(raffle)</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/Foundry/" rel="tag"># Foundry</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/13/blog01/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kino Hui">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KinoHui's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/13/blog01/" class="post-title-link" itemprop="url">blog01</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-13 22:34:29" itemprop="dateCreated datePublished" datetime="2024-12-13T22:34:29+08:00">2024-12-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-17 09:11:26" itemprop="dateModified" datetime="2024-12-17T09:11:26+08:00">2024-12-17</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/12/13/blog01/" rel="prev" title="blog01">
+      <i class="fa fa-chevron-left"></i> blog01
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/13/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kino Hui">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KinoHui's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/13/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-13 11:02:20" itemprop="dateCreated datePublished" datetime="2024-12-13T11:02:20+08:00">2024-12-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -561,6 +443,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83"><span class="nav-number">1.</span> <span class="nav-text">编码规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SimpleStorage"><span class="nav-number">2.</span> <span class="nav-text">SimpleStorage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Foundry%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">2.1.</span> <span class="nav-text">Foundry项目初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Script-xxx-s-sol"><span class="nav-number">2.2.</span> <span class="nav-text">Script(xxx.s.sol)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E7%A7%81%E9%92%A5"><span class="nav-number">2.3.</span> <span class="nav-text">加密私钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E7%BA%A6%E4%BA%A4%E4%BA%92%EF%BC%88CLI%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">合约交互（CLI）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FundMe"><span class="nav-number">3.</span> <span class="nav-text">FundMe</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%EF%BC%88FundMe-sol%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">导入（FundMe.sol）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">3.2.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%86%E7%9B%96%E7%8E%87"><span class="nav-number">3.3.</span> <span class="nav-text">覆盖率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AEStorage%EF%BC%88FundMe-sol"><span class="nav-number">3.4.</span> <span class="nav-text">访问Storage（FundMe.sol)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="nav-number">3.5.</span> <span class="nav-text">指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%BA%93"><span class="nav-number">3.6.</span> <span class="nav-text">常用库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toml%E6%96%87%E4%BB%B6%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">3.7.</span> <span class="nav-text">toml文件常用配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cheat-code"><span class="nav-number">3.8.</span> <span class="nav-text">cheat code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95%EF%BC%88Fuzz-Testing%EF%BC%89"><span class="nav-number">3.9.</span> <span class="nav-text">模糊测试（Fuzz Testing）</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
