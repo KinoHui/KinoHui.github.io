@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Gas在以太坊和其他基于以太坊的区块链平台上，Gas 是一个非常重要的概念。它决定了交易的成本、智能合约的执行费用以及网络的运作效率。了解 Gas 是理解区块链经济性和开发的关键。以下是对 Gas 相关内容的详细讲解： 1. 什么是 Gas?Gas 是以太坊网络中用来度量计算工作量的单位。每当你在以太坊网络上执行交易或运行智能合约时，网络中的每个节点都需要消耗计算资源来处理这些操作。为了补偿这些资">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gas">
+<meta property="og:url" content="http://example.com/2024/12/19/Gas/index.html">
+<meta property="og:site_name" content="KinoHui&#39;s Blog">
+<meta property="og:description" content="Gas在以太坊和其他基于以太坊的区块链平台上，Gas 是一个非常重要的概念。它决定了交易的成本、智能合约的执行费用以及网络的运作效率。了解 Gas 是理解区块链经济性和开发的关键。以下是对 Gas 相关内容的详细讲解： 1. 什么是 Gas?Gas 是以太坊网络中用来度量计算工作量的单位。每当你在以太坊网络上执行交易或运行智能合约时，网络中的每个节点都需要消耗计算资源来处理这些操作。为了补偿这些资">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-12-19T01:52:49.000Z">
+<meta property="article:modified_time" content="2024-12-19T02:00:59.582Z">
+<meta property="article:author" content="Kino Hui">
+<meta property="article:tag" content="Solidity">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2024/12/19/Gas/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Gas | KinoHui's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">KinoHui's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ncie day:)</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/19/Gas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kino Hui">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KinoHui's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Gas
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-12-19 09:52:49 / 修改时间：10:00:59" itemprop="dateCreated datePublished" datetime="2024-12-19T09:52:49+08:00">2024-12-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="Gas"><a href="#Gas" class="headerlink" title="Gas"></a>Gas</h3><p>在以太坊和其他基于以太坊的区块链平台上，<code>Gas</code> 是一个非常重要的概念。它决定了交易的成本、智能合约的执行费用以及网络的运作效率。了解 <code>Gas</code> 是理解区块链经济性和开发的关键。以下是对 <code>Gas</code> 相关内容的详细讲解：</p>
+<h4 id="1-什么是-Gas"><a href="#1-什么是-Gas" class="headerlink" title="1. 什么是 Gas?"></a>1. <strong>什么是 Gas?</strong></h4><p><code>Gas</code> 是以太坊网络中用来度量计算工作量的单位。每当你在以太坊网络上执行交易或运行智能合约时，网络中的每个节点都需要消耗计算资源来处理这些操作。为了补偿这些资源消耗，以太坊引入了 <code>Gas</code> 机制。</p>
+<h4 id="2-Gas-价格与-Gas-费用"><a href="#2-Gas-价格与-Gas-费用" class="headerlink" title="2. Gas 价格与 Gas 费用"></a>2. <strong>Gas 价格与 Gas 费用</strong></h4><ul>
+<li><p><strong>Gas 价格 (Gas Price)</strong>: </p>
+<ul>
+<li><code>Gas 价格</code> 是你愿意为每个 <code>Gas</code> 支付的费用，通常以 <code>Gwei</code> 为单位（1 Gwei &#x3D; 10^-9 ETH）。</li>
+<li>交易发送者可以自己设定 Gas 价格。较高的 Gas 价格意味着矿工更有可能优先处理你的交易，因为他们通过处理交易来赚取 Gas 费用。</li>
+</ul>
+</li>
+<li><p><strong>Gas 费用 (Gas Fee)</strong>:</p>
+<ul>
+<li><code>Gas 费用</code> 是你为了执行交易或运行智能合约而实际支付的费用。计算方式为：<br>[<br>\text{Gas Fee} &#x3D; \text{Gas Used} \times \text{Gas Price}<br>]</li>
+<li>例如，如果你的交易消耗了 21,000 Gas，而你设置的 Gas Price 是 20 Gwei，那么 Gas Fee 为：<br>[<br>21,000 \times 20 \text{ Gwei} &#x3D; 420,000 \text{ Gwei} &#x3D; 0.00042 \text{ ETH}<br>]</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-Gas-Limit"><a href="#3-Gas-Limit" class="headerlink" title="3. Gas Limit"></a>3. <strong>Gas Limit</strong></h4><ul>
+<li><p><strong>Gas 上限 (Gas Limit)</strong>:</p>
+<ul>
+<li><code>Gas 上限</code> 是你愿意为某个交易或智能合约执行支付的最高 Gas 量。它确保即使交易或合约执行过程中出现问题，消耗的 Gas 也不会超过这个上限。</li>
+<li>对于普通交易（如转账），通常的 Gas 上限是 21,000 Gas。对于智能合约调用，Gas 上限需要根据合约的复杂性来设定。</li>
+</ul>
+</li>
+<li><p><strong>区块 Gas 上限 (Block Gas Limit)</strong>:</p>
+<ul>
+<li>每个以太坊区块都有一个 <code>区块 Gas 上限</code>，这限制了单个区块中可以包含的总 Gas 量。这个上限决定了一个区块能包含多少交易。</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-Gas-的工作原理"><a href="#4-Gas-的工作原理" class="headerlink" title="4. Gas 的工作原理"></a>4. <strong>Gas 的工作原理</strong></h4><p>当你在以太坊上发起交易时，以下几个步骤与 Gas 相关：</p>
+<ol>
+<li><p><strong>设定 Gas 价格和 Gas 上限</strong>: </p>
+<ul>
+<li>你需要为交易设定 Gas 价格和 Gas 上限。Gas 价格越高，交易被矿工打包的优先级越高。</li>
+</ul>
+</li>
+<li><p><strong>交易执行</strong>: </p>
+<ul>
+<li>矿工在验证交易时，会执行交易中的每一步操作，并计算需要消耗的 Gas 量。</li>
+</ul>
+</li>
+<li><p><strong>支付 Gas 费用</strong>: </p>
+<ul>
+<li>如果交易成功，消耗的实际 Gas 将从你的账户中扣除，支付给矿工。如果 Gas 用尽（即实际消耗达到 Gas 上限），交易会失败，但你仍然需要支付已消耗的 Gas。</li>
+</ul>
+</li>
+<li><p><strong>剩余 Gas 返还</strong>: </p>
+<ul>
+<li>如果交易执行完毕后还有剩余的 Gas，这部分 Gas 将返还给你。</li>
+</ul>
+</li>
+</ol>
+<h4 id="5-Gas-的重要性"><a href="#5-Gas-的重要性" class="headerlink" title="5. Gas 的重要性"></a>5. <strong>Gas 的重要性</strong></h4><ul>
+<li><p><strong>网络稳定性</strong>: Gas 机制防止了恶意合约或无效交易占用网络资源。通过限制交易的计算量，网络可以避免陷入无休止的循环或资源消耗。</p>
+</li>
+<li><p><strong>交易经济性</strong>: 用户可以通过调整 Gas 价格来控制交易费用。低 Gas 价格可能导致交易延迟，而高 Gas 价格则能加快交易确认速度。</p>
+</li>
+<li><p><strong>矿工收入</strong>: 矿工通过处理交易并收取 Gas 费用来获得收益。这是他们在区块奖励之外的主要收入来源。</p>
+</li>
+</ul>
+<h4 id="6-EIP-1559-和-Base-Fee"><a href="#6-EIP-1559-和-Base-Fee" class="headerlink" title="6. EIP-1559 和 Base Fee"></a>6. <strong>EIP-1559 和 Base Fee</strong></h4><p>以太坊于 2021 年通过了 <code>EIP-1559</code> 提案，改变了交易费用的计算方式，这一变革对以太坊网络的交易行为产生了深远影响。以下是 EIP-1559 的一些核心概念和其影响：</p>
+<ul>
+<li><strong>Base Fee</strong>:<ul>
+<li><code>Base Fee</code> 是每个区块中所有交易的基础费用，由协议自动调整，基于前一个区块的需求。这个费用会随着网络的拥堵程度自动调整，目的是使交易费用更加可预测，减少用户在高峰期时的拥堵和不确定性。</li>
+</ul>
+</li>
+<li><strong>动态调整机制</strong>:<ul>
+<li>在 EIP-1559 之前，用户需要手动设置 Gas 价格，且该价格可能会因网络拥堵而波动。EIP-1559 引入了一个动态调整机制，每个区块的 Base Fee 根据前一个区块的使用情况自动增加或减少。这种机制确保了在网络繁忙时 Base Fee 会增加，而在网络空闲时会减少，从而帮助用户更有效地管理他们的交易费用。</li>
+</ul>
+</li>
+<li><strong>用户体验的改善</strong>:<ul>
+<li>EIP-1559 的实施使得用户在提交交易时不再需要为 Gas 价格的波动而过于担心。用户可以选择支付 Base Fee 加上一个小额的 <code>tip</code>（小费）来激励矿工优先处理他们的交易。这个小费是用户愿意支付的额外费用，矿工会根据这个小费来决定处理交易的优先级。</li>
+</ul>
+</li>
+<li><strong>费用的透明性</strong>:<ul>
+<li>Base Fee 的变化是公开的，用户可以在以太坊区块浏览器中查看当前的 Base Fee。这种透明性使得用户能够更好地了解和预测他们需要支付的交易费用。</li>
+</ul>
+</li>
+<li><strong>减少 Gas 费用的波动性</strong>:<ul>
+<li>通过引入 Base Fee，EIP-1559 减少了 Gas 费用的极端波动。之前，用户可能会在网络拥堵时面临高昂的 Gas 费用，而现在，费用的调整机制使得这种波动性有所缓解。</li>
+</ul>
+</li>
+<li><strong>燃烧机制</strong>:<ul>
+<li>EIP-1559 还引入了 Gas 费用的燃烧机制。支付的 Base Fee 会从流通中永久移除（燃烧），这意味着随着使用量的增加，ETH 的总供应量可能会减少，从而影响 ETH 的经济模型和价值。这一机制也为以太坊的通货膨胀提供了缓解。</li>
+</ul>
+</li>
+<li><strong>矿工的收入变化</strong>:<ul>
+<li>在 EIP-1559 实施后，矿工的收入结构发生了变化。虽然 Base Fee 会被燃烧，但矿工仍然通过处理交易收取小费。小费的多少取决于用户愿意支付的额外费用，矿工需要在 Base Fee 和小费之间找到平衡，以确保他们的收益最大化。</li>
+</ul>
+</li>
+<li><strong>用户应对策略</strong>:<ul>
+<li>用户在 EIP-1559 实施后，应该关注当前的 Base Fee 和网络状态，合理设置他们的交易小费，以确保交易能够及时被处理。在高峰期，用户可能需要增加小费以获得更好的确认速度。</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Solidity/" rel="tag"># Solidity</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/12/18/testImgs/" rel="prev" title="ImgTest">
+      <i class="fa fa-chevron-left"></i> ImgTest
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/12/19/Storage/" rel="next" title="Storage">
+      Storage <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gas"><span class="nav-number">1.</span> <span class="nav-text">Gas</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF-Gas"><span class="nav-number">1.1.</span> <span class="nav-text">1. 什么是 Gas?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Gas-%E4%BB%B7%E6%A0%BC%E4%B8%8E-Gas-%E8%B4%B9%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">2. Gas 价格与 Gas 费用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Gas-Limit"><span class="nav-number">1.3.</span> <span class="nav-text">3. Gas Limit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Gas-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.4.</span> <span class="nav-text">4. Gas 的工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Gas-%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="nav-number">1.5.</span> <span class="nav-text">5. Gas 的重要性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-EIP-1559-%E5%92%8C-Base-Fee"><span class="nav-number">1.6.</span> <span class="nav-text">6. EIP-1559 和 Base Fee</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Kino Hui</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kino Hui</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
