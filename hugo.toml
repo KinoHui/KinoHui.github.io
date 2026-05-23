@@ -14,6 +14,9 @@ theme = 'PaperMod'
   ShowCodeCopyButtons = true
   ShowToc = true
 
+  [params.assets]
+    theme = "#00be91"
+
   [params.homeInfoParams]
     Title = "Hi, I'm Kino"
     Content = "Write code, read source."

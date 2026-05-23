@@ -2,3 +2,94 @@ code, pre, .highlight,
 .post-content code {
     font-family: 'Maple Mono NF CN', "Cascadia Code", "Fira Code", Consolas, monospace;
 }
+
+/* ===== Cyan/Teal Gradient Theme ===== */
+
+/* --- Dark mode colors --- */
+:root[data-theme="dark"] {
+    --theme: #121a1a;
+    --entry: #1a2626;
+    --primary: rgb(0, 217, 163);
+    --secondary: rgba(0, 190, 145, 0.7);
+    --tertiary: rgba(0, 190, 145, 0.2);
+    --content: #c0d8d0;
+    --code-block-bg: #0f1a18;
+    --code-bg: #1a2a26;
+    --border: rgba(0, 190, 145, 0.15);
+    --header-color: #121a1a;
+}
+
+/* --- Light mode colors --- */
+:root {
+    --primary: rgb(0, 140, 105);
+    --secondary: rgba(0, 120, 90, 0.75);
+    --tertiary: rgba(0, 160, 120, 0.15);
+    --content: #1a2e28;
+    --code-block-bg: #0f1a18;
+    --code-bg: #e8f5f0;
+    --border: rgba(0, 160, 120, 0.2);
+}
+
+/* --- Gradient accent on header --- */
+#header {
+    background: linear-gradient(135deg,
+        rgba(0, 160, 120, 0.25),
+        rgb(0, 190, 145),
+        rgba(0, 217, 163, 0.6));
+    border-bottom: 1px solid rgba(0, 190, 145, 0.3);
+}
+
+[data-theme="dark"] #header {
+    background: linear-gradient(135deg,
+        rgba(0, 160, 120, 0.2),
+        rgba(0, 190, 145, 0.6),
+        rgba(0, 217, 163, 0.3));
+}
+
+#header a, #header .site-name {
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Post entry card hover --- */
+.post-entry {
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.post-entry:hover {
+    border-color: rgba(0, 190, 145, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 190, 145, 0.12);
+}
+
+/* --- Links and headings hover --- */
+a:hover, .post-content a:hover {
+    color: rgb(0, 217, 163);
+}
+
+/* --- Tags --- */
+.post-tags a {
+    color: rgb(0, 190, 145);
+    border-color: rgba(0, 190, 145, 0.3);
+    transition: all 0.2s;
+}
+
+.post-tags a:hover {
+    background: rgba(0, 190, 145, 0.15);
+    border-color: rgba(0, 190, 145, 0.6);
+}
+
+/* --- Scrollbar (webkit) --- */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 190, 145, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 190, 145, 0.5);
+}
+
+/* --- Selection highlight --- */
+::selection {
+    background: rgba(0, 190, 145, 0.35);
+    color: #fff;
+}
