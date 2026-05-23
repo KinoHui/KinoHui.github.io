@@ -16,6 +16,7 @@ theme = 'PaperMod'
 
   [params.assets]
     theme = "#00be91"
+    favicon = "favicon.svg"
 
   [params.homeInfoParams]
     Title = "Hi, I'm Kino"
