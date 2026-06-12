@@ -1,11 +1,11 @@
 baseURL = 'https://kinohui.github.io/'
 locale = 'zh-cn'
-title = "Kino's Blog"
+title = "Kino Notes"
 theme = 'PaperMod'
 
 [params]
   env = "production"
-  description = "个人博客"
+  description = "源码阅读、云原生与工程笔记"
   defaultTheme = "auto"
   ShowShareButtons = true
   ShowReadingTime = true
@@ -19,8 +19,8 @@ theme = 'PaperMod'
     favicon = "favicon.svg"
 
   [params.homeInfoParams]
-    Title = "Hi, I'm Kino"
-    Content = "Write code, read source."
+    Title = "Kino Notes"
+    Content = "源码阅读、云原生与工程实践笔记。把复杂系统拆开，看清它们如何工作。"
 
   [[params.socialIcons]]
     name = "github"
@@ -51,4 +51,4 @@ theme = 'PaperMod'
     codeFences = true
     guessSyntax = true
     lineNos = false
-    style = "dracula"
+    style = "github-dark"
