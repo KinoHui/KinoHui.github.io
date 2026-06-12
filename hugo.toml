@@ -38,15 +38,26 @@ theme = 'PaperMod'
     url = "/series/"
     weight = 20
   [[menu.main]]
+    identifier = "search"
+    name = "搜索"
+    url = "/search/"
+    weight = 30
+  [[menu.main]]
     identifier = "tags"
     name = "标签"
     url = "/tags/"
-    weight = 30
+    weight = 40
   [[menu.main]]
     identifier = "categories"
     name = "分类"
     url = "/categories/"
-    weight = 40
+    weight = 50
+
+  [params.fuseOpts]
+    threshold = 0.32
+    distance = 120
+    limit = 12
+    keys = ["title", "permalink", "summary", "content"]
 
 [taxonomies]
   tag = "tags"
