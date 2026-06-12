@@ -333,6 +333,104 @@ details .inner {
     padding: 1rem;
 }
 
+.series-panel {
+    margin: 44px 0 18px;
+    padding: 22px;
+    background: color-mix(in srgb, var(--entry) 88%, var(--theme));
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.series-panel-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 16px;
+}
+
+.series-panel-kicker {
+    margin: 0 0 6px;
+    color: var(--accent-strong);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.series-panel h2 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 22px;
+    line-height: 1.35;
+    letter-spacing: 0;
+}
+
+.series-panel-link {
+    flex: 0 0 auto;
+    padding: 5px 10px;
+    color: var(--secondary);
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.series-panel-link:hover {
+    color: var(--accent-strong);
+    border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
+}
+
+.series-panel-list {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.series-panel-list li a {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    padding: 11px 12px;
+    color: var(--content);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.series-panel-list li a:hover,
+.series-panel-list li.is-current a {
+    background: var(--accent-soft);
+    border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
+}
+
+.series-panel-list li.is-current a {
+    color: var(--primary);
+}
+
+.series-panel-index {
+    color: var(--accent-strong);
+    font-family: "Maple Mono NF CN", "Cascadia Code", "Fira Code", Consolas, monospace;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.series-panel-title {
+    overflow: hidden;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.series-panel-meta {
+    color: var(--secondary);
+    font-size: 13px;
+}
+
 .archive-year:not(:last-of-type),
 .archive-month:not(:last-of-type) {
     border-color: var(--border);
@@ -399,6 +497,27 @@ details .inner {
     .post-content {
         font-size: 16px;
         line-height: 1.82;
+    }
+
+    .series-panel {
+        padding: 18px;
+    }
+
+    .series-panel-header {
+        display: block;
+    }
+
+    .series-panel-link {
+        display: inline-flex;
+        margin-top: 12px;
+    }
+
+    .series-panel-list li a {
+        grid-template-columns: 36px minmax(0, 1fr);
+    }
+
+    .series-panel-meta {
+        grid-column: 2;
     }
 
     .md-content h2 {

@@ -1,0 +1,29 @@
+{{- $seriesTerms := .GetTerms "series" -}}
+{{- if $seriesTerms -}}
+  {{- range $seriesTerms -}}
+    {{- $pages := .Pages.ByWeight -}}
+    {{- if gt (len $pages) 1 -}}
+<section class="series-panel" aria-labelledby="series-panel-title">
+  <div class="series-panel-header">
+    <div>
+      <p class="series-panel-kicker">Series</p>
+      <h2 id="series-panel-title">{{ .LinkTitle }}</h2>
+    </div>
+    <a class="series-panel-link" href="{{ .Permalink }}">全部 {{ len $pages }} 篇</a>
+  </div>
+  <ol class="series-panel-list">
+    {{- range $index, $page := $pages }}
+    {{- $isCurrent := eq $page.RelPermalink $.RelPermalink }}
+    <li class="{{ if $isCurrent }}is-current{{ end }}">
+      <a href="{{ $page.Permalink }}" {{ if $isCurrent }}aria-current="page"{{ end }}>
+        <span class="series-panel-index">{{ printf "%02d" (add $index 1) }}</span>
+        <span class="series-panel-title">{{ $page.Title }}</span>
+        <span class="series-panel-meta">{{ $page.ReadingTime }} min</span>
+      </a>
+    </li>
+    {{- end }}
+  </ol>
+</section>
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

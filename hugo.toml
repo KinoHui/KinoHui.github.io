@@ -33,15 +33,25 @@ theme = 'PaperMod'
     url = "/archives/"
     weight = 10
   [[menu.main]]
+    identifier = "series"
+    name = "系列"
+    url = "/series/"
+    weight = 20
+  [[menu.main]]
     identifier = "tags"
     name = "标签"
     url = "/tags/"
-    weight = 20
+    weight = 30
   [[menu.main]]
     identifier = "categories"
     name = "分类"
     url = "/categories/"
-    weight = 30
+    weight = 40
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
