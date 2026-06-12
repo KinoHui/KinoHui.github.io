@@ -447,7 +447,7 @@ sudo cat /sys/fs/cgroup/<cgroup-path>/memory.current
 
 | 视角 | 说明 |
 |------|------|
-| /proc/<pid>/status | 单进程视角 |
+| `/proc/<pid>/status` | 单进程视角 |
 | /sys/fs/cgroup/.../memory.current | 容器/cgroup 视角 |
 
 查看 memory events：

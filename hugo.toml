@@ -67,6 +67,24 @@ theme = 'PaperMod'
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
+[related]
+  threshold = 80
+  includeNewer = true
+  toLower = true
+
+  [[related.indices]]
+    name = "series"
+    weight = 120
+  [[related.indices]]
+    name = "tags"
+    weight = 90
+  [[related.indices]]
+    name = "categories"
+    weight = 60
+  [[related.indices]]
+    name = "date"
+    weight = 10
+
 [markup]
   [markup.highlight]
     codeFences = true

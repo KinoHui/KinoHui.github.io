@@ -263,7 +263,7 @@ PID   USER     TIME  COMMAND
 
 ---
 
-## 6. /proc/<pid> 是进程的体检报告
+## 6. `/proc/<pid>` 是进程的体检报告
 
 查看进程状态：
 

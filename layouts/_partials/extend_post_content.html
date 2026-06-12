@@ -27,3 +27,24 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
+
+{{- $related := first 4 (site.RegularPages.Related .) -}}
+{{- if $related -}}
+<section class="related-panel" aria-labelledby="related-panel-title">
+  <div class="home-section-heading">
+    <p>Related</p>
+    <h2 id="related-panel-title">相关文章</h2>
+  </div>
+  <div class="related-grid">
+    {{- range $related }}
+    <a class="related-card" href="{{ .Permalink }}">
+      <span>{{ .Date | time.Format "2006.01.02" }} · {{ .ReadingTime }} min</span>
+      <strong>{{ .Title }}</strong>
+      {{- with .Summary }}
+      <p>{{ . | plainify | htmlUnescape }}</p>
+      {{- end }}
+    </a>
+    {{- end }}
+  </div>
+</section>
+{{- end -}}

@@ -84,6 +84,25 @@ pre,
     backdrop-filter: blur(18px);
 }
 
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 40;
+    width: 100%;
+    height: 3px;
+    pointer-events: none;
+}
+
+.reading-progress span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-strong), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left center;
+}
+
 [data-theme="dark"] #header {
     background: rgba(14, 19, 17, 0.82);
     border-bottom-color: rgba(38, 50, 44, 0.82);
@@ -508,6 +527,39 @@ details .inner {
     color: var(--accent-strong);
 }
 
+.search-result-content {
+    min-width: 0;
+    padding-inline-end: 18px;
+}
+
+.search-result-content strong {
+    display: block;
+    color: var(--primary);
+    font-size: 17px;
+    line-height: 1.45;
+}
+
+.search-result-content p {
+    display: -webkit-box;
+    overflow: hidden;
+    margin: 6px 0 8px;
+    color: var(--secondary);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.search-result-content span {
+    display: block;
+    overflow: hidden;
+    color: var(--secondary);
+    font-family: "Maple Mono NF CN", "Cascadia Code", "Fira Code", Consolas, monospace;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .searchResults li .entry-link:focus {
     outline-color: var(--accent-strong);
 }
@@ -608,6 +660,60 @@ details .inner {
 .series-panel-meta {
     color: var(--secondary);
     font-size: 13px;
+}
+
+.related-panel {
+    margin: 34px 0 18px;
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.related-card {
+    display: block;
+    min-width: 0;
+    padding: 18px;
+    color: var(--content);
+    background: color-mix(in srgb, var(--entry) 88%, var(--theme));
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.related-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-2px);
+}
+
+.related-card span {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--secondary);
+    font-family: "Maple Mono NF CN", "Cascadia Code", "Fira Code", Consolas, monospace;
+    font-size: 12px;
+}
+
+.related-card strong {
+    display: block;
+    color: var(--primary);
+    font-size: 16px;
+    line-height: 1.45;
+}
+
+.related-card p {
+    display: -webkit-box;
+    overflow: hidden;
+    margin: 10px 0 0;
+    color: var(--secondary);
+    font-size: 14px;
+    line-height: 1.65;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .archive-year:not(:last-of-type),
@@ -729,6 +835,10 @@ details .inner {
 
     .series-panel-meta {
         grid-column: 2;
+    }
+
+    .related-grid {
+        grid-template-columns: 1fr;
     }
 
     .md-content h2 {

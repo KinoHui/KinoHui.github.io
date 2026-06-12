@@ -1,0 +1,27 @@
+{{- if and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") -}}
+<div class="reading-progress" aria-hidden="true">
+  <span id="reading-progress-bar"></span>
+</div>
+<script>
+  (() => {
+    const bar = document.getElementById("reading-progress-bar");
+    const article = document.querySelector(".post-single");
+
+    if (!bar || !article) {
+      return;
+    }
+
+    const updateProgress = () => {
+      const start = article.offsetTop;
+      const end = start + article.offsetHeight - window.innerHeight;
+      const current = window.scrollY - start;
+      const progress = end <= start ? 1 : Math.min(Math.max(current / (end - start), 0), 1);
+      bar.style.transform = `scaleX(${progress})`;
+    };
+
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+  })();
+</script>
+{{- end -}}
