@@ -457,6 +457,51 @@ details.toc,
     border-radius: 8px;
 }
 
+.compact-share {
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.compact-share li {
+    display: inline-flex;
+}
+
+.compact-share a,
+.share-copy-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0 13px;
+    color: var(--secondary);
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+.compact-share a {
+    gap: 8px;
+}
+
+.compact-share a span:first-child {
+    color: var(--accent-strong);
+    font-family: "Maple Mono NF CN", "Cascadia Code", "Fira Code", Consolas, monospace;
+}
+
+.compact-share a:hover,
+.share-copy-button:hover {
+    color: var(--accent-strong);
+    background: var(--accent-soft);
+    border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
+}
+
 details.toc summary {
     padding: 0.55rem 1rem;
 }

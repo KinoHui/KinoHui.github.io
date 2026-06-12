@@ -2,6 +2,7 @@ baseURL = 'https://kinohui.github.io/'
 locale = 'zh-cn'
 title = "Kino Notes"
 theme = 'PaperMod'
+ignoreFiles = ['static/images/og-default\.png$', 'static/images/og-default\.png\.tmp\.png$']
 
 [params]
   env = "production"

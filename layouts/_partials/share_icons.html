@@ -1,0 +1,16 @@
+{{- $rss := site.Home.OutputFormats.Get "RSS" -}}
+<ul class="share-buttons compact-share">
+  <li>
+    <button class="share-copy-button" type="button" data-copy-url="{{ .Permalink }}" aria-label="复制本文链接">
+      <span class="share-copy-text">复制链接</span>
+    </button>
+  </li>
+  {{- with $rss }}
+  <li>
+    <a href="{{ .Permalink }}" aria-label="订阅 RSS">
+      <span aria-hidden="true">RSS</span>
+      <span>订阅</span>
+    </a>
+  </li>
+  {{- end }}
+</ul>
