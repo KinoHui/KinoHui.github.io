@@ -1,0 +1,47 @@
+{{- $series := site.Taxonomies.series.ByCount -}}
+{{- $latest := first 5 (where site.RegularPages.ByDate.Reverse "Type" "posts") -}}
+{{- if or $series $latest -}}
+<section class="home-discovery" aria-label="精选内容">
+  {{- if $series -}}
+  <div class="home-discovery-block">
+    <div class="home-section-heading">
+      <p>Featured Series</p>
+      <h2>精选系列</h2>
+    </div>
+    <div class="home-series-grid">
+      {{- range first 4 $series }}
+        {{- $termPage := site.GetPage (printf "/series/%s" .Name) -}}
+        {{- if $termPage -}}
+      <a class="home-series-card" href="{{ $termPage.Permalink }}">
+        <span class="home-series-count">{{ .Count }} 篇</span>
+        <h3>{{ $termPage.Title | default .Name }}</h3>
+        {{- with $termPage.Description }}
+        <p>{{ . }}</p>
+        {{- end }}
+      </a>
+        {{- end -}}
+      {{- end }}
+    </div>
+  </div>
+  {{- end -}}
+
+  {{- if $latest -}}
+  <div class="home-discovery-block home-latest-block">
+    <div class="home-section-heading">
+      <p>Recently Updated</p>
+      <h2>最近更新</h2>
+    </div>
+    <ol class="home-latest-list">
+      {{- range $latest }}
+      <li>
+        <a href="{{ .Permalink }}">
+          <span>{{ .Date | time.Format "2006.01.02" }}</span>
+          <strong>{{ .Title }}</strong>
+        </a>
+      </li>
+      {{- end }}
+    </ol>
+  </div>
+  {{- end -}}
+</section>
+{{- end -}}
