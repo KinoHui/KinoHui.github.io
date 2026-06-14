@@ -11,13 +11,6 @@ weight: 1
 
 ## 0. 当前学习背景
 
-**目标岗位**：滴滴 K8s 开发岗位。
-
-**已有基础**：
-- Go 较熟悉
-- 已阅读过部分 Kubernetes apiserver、informer、scheduler 源码
-- 当前补强重点不是普通 Linux 命令使用，而是 K8s 节点侧开发、排障、kubelet/containerd/CNI/cgroup 相关的 Linux 底层能力
-
 **实验环境**：
 - Windows 宿主机
 - WSL2 中使用 `kubectl` 访问集群
@@ -51,12 +44,6 @@ k8s-node2   192.168.59.136  worker
 - 网络问题
 - kubelet/containerd 节点组件问题
 - cgroup 资源限制问题
-
-目前已经完成：
-1. 进程与 `/proc`
-2. namespace 与 cgroup 基础
-3. CPU 与负载排障
-4. CPU limit 与 cgroup v2 throttling 实验
 
 ---
 

@@ -11,8 +11,6 @@ weight: 2
 
 ## 0. 本阶段上下文
 
-**当前学习目标**：为 Kubernetes 开发岗位补强 Linux 节点侧排障能力。
-
 **实验环境**：
 - Windows 宿主机
 - WSL2 使用 `kubectl` 访问集群
