@@ -5,8 +5,11 @@
   {{- if $series -}}
   <div class="home-discovery-block">
     <div class="home-section-heading">
-      <p>Featured Series</p>
-      <h2>精选系列</h2>
+      <div>
+        <p>Featured Series</p>
+        <h2>精选系列</h2>
+      </div>
+      <a class="home-section-link" href="{{ "series/" | absURL }}">全部系列</a>
     </div>
     <div class="home-series-grid">
       {{- range first 4 $series }}

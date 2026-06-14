@@ -14,6 +14,7 @@ ignoreFiles = ['static/images/og-default\.png$', 'static/images/og-default\.png\
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
   ShowToc = true
+  comments = true
 
   [params.assets]
     theme = "#00be91"
@@ -26,6 +27,21 @@ ignoreFiles = ['static/images/og-default\.png$', 'static/images/og-default\.png\
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/KinoHui"
+
+  [params.giscus]
+    enabled = true
+    repo = "KinoHui/KinoHui.github.io"
+    repoId = "R_kgDOSlhajw"
+    category = "Announcements"
+    categoryId = "DIC_kwDOSlhaj84C_HS5"
+    mapping = "pathname"
+    strict = "1"
+    reactionsEnabled = "1"
+    emitMetadata = "0"
+    inputPosition = "bottom"
+    theme = "preferred_color_scheme"
+    lang = "zh-CN"
+    loading = "lazy"
 
 [menu]
   [[menu.main]]
