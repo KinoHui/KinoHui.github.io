@@ -1,5 +1,5 @@
 ---
-title: "K8s 节点排障（七）：阶段 1 总总结"
+title: "K8s 节点排障（七）：阶段总结"
 date: 2026-06-14T11:00:00+08:00
 draft: false
 tags: ["Kubernetes", "Linux", "排障", "总结", "namespace", "cgroup", "网络", "日志"]
